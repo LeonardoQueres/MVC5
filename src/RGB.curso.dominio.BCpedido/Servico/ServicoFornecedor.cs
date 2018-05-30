@@ -3,6 +3,7 @@ using RGB.curso.dominio.BCpedido.Interfaces.Repositorio;
 using RGB.curso.dominio.BCpedido.Interfaces.Servico;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace RGB.curso.dominio.BCpedido.Servico
@@ -18,11 +19,14 @@ namespace RGB.curso.dominio.BCpedido.Servico
 
         public Fornecedor Adicionar(Fornecedor obj)
         {
+            obj = AptoParaAdicionarFornecedor(obj);
+            if (obj.ListaErros.Any()) return obj;
             return repositorio.Adicionar(obj);
         }
 
         public Fornecedor Atualizar(Fornecedor obj)
         {
+            obj = AptoParaAtualizarFornecedor(obj);
             return repositorio.Atualizar(obj);
         }
 
@@ -66,6 +70,47 @@ namespace RGB.curso.dominio.BCpedido.Servico
             GC.SuppressFinalize(this);
         }
 
+        private Fornecedor AptoParaAdicionarFornecedor(Fornecedor obj)
+        {
+            obj.EstaConsistente();
+            obj = VerificarSeApelidoExisteEmInclusao(obj);
+            obj = VerificarSeCnpjCpfExisteEmInclusao(obj);
+            return obj;
+        }
 
+        private Fornecedor AptoParaAtualizarFornecedor(Fornecedor obj)
+        {
+            if (!obj.EstaConsistente()) return obj;
+            obj = VerificarSeApelidoExisteEmAlteracao(obj);
+            obj = VerificarSeCnpjCpfExisteEmAlteracao(obj);
+            return obj;
+        }
+
+
+        private Fornecedor VerificarSeApelidoExisteEmInclusao(Fornecedor obj)
+        {
+            if (ObterPorApelido(obj.Apelido) != null) { obj.ListaErros.Add("O apelido " + obj.Apelido + " já existe no cadastro de fornecedores!"); }
+            return obj;
+        }
+
+        private Fornecedor VerificarSeCnpjCpfExisteEmInclusao(Fornecedor obj)
+        {
+            if (ObterPorCpfCnpj(obj.CpfCnpj.CpfCnpj) != null) { obj.ListaErros.Add("O CPF/CNPJ " + obj.CpfCnpj.CpfCnpj + " já existe no cadastro de fornecedores!"); }
+            return obj;
+        }
+
+        private Fornecedor VerificarSeApelidoExisteEmAlteracao(Fornecedor obj)
+        {
+            var fornecedor = ObterPorApelido(obj.Apelido);
+            if (fornecedor != null && fornecedor.Id != obj.Id) { obj.ListaErros.Add("O apelido " + obj.Apelido + " já existe no cadastro de fornecedores!"); }
+            return obj;
+        }
+
+        private Fornecedor VerificarSeCnpjCpfExisteEmAlteracao(Fornecedor obj)
+        {
+            var fornecedor = ObterPorCpfCnpj(obj.CpfCnpj.CpfCnpj);
+            if (fornecedor != null && fornecedor.Id != obj.Id) { obj.ListaErros.Add("O CPF/CNPJ " + obj.CpfCnpj.CpfCnpj + " já existe no cadastro de fornecedores!"); }
+            return obj;
+        }
     }
 }

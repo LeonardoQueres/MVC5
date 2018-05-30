@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RGB.curso.aplicacao.AppPedidos.ViewModels.FornecedorViewModel>
+
+@{
+    ViewBag.Title = "Lista de Fornecedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Clientes</h2>
+
+<p>
+    <a href="@Url.Action("Incluir", "Fornecedor")" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>
+            <strong>Novo Fornecedor</strong>
+        </span>
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Apelido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.Label("Endereço")
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apelido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco.Endereco)
+            </td>
+            <td>
+                <a href="@Url.Action("Alterar", "Fornecedor", new { id = item.Id } )" class="btn btn-success">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+
+                <a href="@Url.Action("Excluir", "Fornecedor", new { id = item.Id } )" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

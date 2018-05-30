@@ -3,6 +3,7 @@ using RGB.curso.aplicacao.AppPedidos.Interfaces;
 using RGB.curso.aplicacao.AppPedidos.ViewModels;
 using RGB.curso.dominio.BCpedido.Entidades;
 using RGB.curso.dominio.BCpedido.Interfaces.Servico;
+using RGB.curso.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -12,20 +13,29 @@ namespace RGB.curso.aplicacao.AppPedidos.Servico
     {
 
         private readonly IServicoFornecedor Servico;
-
-        public AplicacaoFornecedor(IServicoFornecedor _servico)
+        private readonly IUnityOfWork UoW;
+        public AplicacaoFornecedor(IServicoFornecedor _servico,
+            IUnityOfWork UoW)
         {
-            Servico = _servico;
+            this.Servico = _servico;
+            this.UoW = UoW;
         }
 
         public FornecedorViewModel Adicionar(FornecedorViewModel obj)
         {
-            return Mapper.Map<Fornecedor, FornecedorViewModel>(Servico.Adicionar(Mapper.Map<FornecedorViewModel, Fornecedor>(obj)));
+            UoW.BeginTransaction();
+            var dominio = Servico.Adicionar(Mapper.Map<FornecedorViewModel, Fornecedor>(obj));
+            UoW.Commit(dominio.ListaErros);
+            return Mapper.Map<Fornecedor, FornecedorViewModel>(dominio);
+
         }
 
         public FornecedorViewModel Atualizar(FornecedorViewModel obj)
         {
-            return Mapper.Map<Fornecedor, FornecedorViewModel>(Servico.Atualizar(Mapper.Map<FornecedorViewModel, Fornecedor>(obj)));
+            UoW.BeginTransaction();
+            var dominio = Servico.Atualizar(Mapper.Map<FornecedorViewModel, Fornecedor>(obj));
+            UoW.Commit(dominio.ListaErros);
+            return Mapper.Map<Fornecedor, FornecedorViewModel>(dominio);
         }
 
         public FornecedorViewModel ObterPorCpfCnpj(string cpfcnpj)

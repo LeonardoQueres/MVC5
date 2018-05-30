@@ -2,6 +2,8 @@
 using RGB.curso.Infra.Data.Contextos;
 using RGB.curso.Infra.Data.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RGB.curso.Infra.Data.UoW
 {
@@ -23,9 +25,10 @@ namespace RGB.curso.Infra.Data.UoW
             disposed = false;
         }
 
-        public void Commit()
+        public void Commit(List<string> listaErros)
         {
-            contexto.SaveChanges();
+            if (!listaErros.Any())
+                contexto.SaveChanges();
         }
 
         public void Dispose()

@@ -23,27 +23,18 @@ namespace RGB.curso.aplicacao.AppPedidos.Servico
 
         public ClienteViewModel Adicionar(ClienteViewModel obj)
         {
-            var cliente = Mapper.Map<ClienteViewModel, Cliente>(obj);
-            if (!cliente.EstaConsistente())
-            {
-                return Mapper.Map<Cliente, ClienteViewModel>(cliente);
-            }
-
             UoW.BeginTransaction();
-            /*faz outras coisas*/
-            var dominio = Servico.Adicionar(cliente);
-            UoW.Commit();
+            var dominio = Servico.Adicionar(Mapper.Map<ClienteViewModel, Cliente>(obj));
+            UoW.Commit(dominio.ListaErros);
 
-            var retorno = Mapper.Map<Cliente, ClienteViewModel>(dominio);
-            return retorno;
-
+            return Mapper.Map<Cliente, ClienteViewModel>(dominio);
         }
 
         public ClienteViewModel Atualizar(ClienteViewModel obj)
         {
             UoW.BeginTransaction();
             var dominio = Servico.Atualizar(Mapper.Map<ClienteViewModel, Cliente>(obj));
-            UoW.Commit();
+            UoW.Commit(dominio.ListaErros);
             return Mapper.Map<Cliente, ClienteViewModel>(dominio);
         }
 

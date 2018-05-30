@@ -4,43 +4,43 @@ using System.Web.Mvc;
 
 namespace RGB.curso.WebPedidos.Controllers
 {
-    public class ClienteController : BaseController
+    public class FornecedorController : BaseController
     {
-        private readonly IAplicacaoCliente AppCliente;
+        private readonly IAplicacaoFornecedor appService;
         private readonly IAplicacaoUf appuf;
-        public ClienteController(IAplicacaoCliente _AppCliente, IAplicacaoUf _appuf)
+        public FornecedorController(IAplicacaoFornecedor appService,
+            IAplicacaoUf appuf)
         {
-            AppCliente = _AppCliente;
-            appuf = _appuf;
+            this.appService = appService;
+            this.appuf = appuf;
         }
 
-        // GET: Cliente
         public ActionResult Index()
         {
-            var model = AppCliente.ObterTodos();
+            var model = appService.ObterTodos();
             return View(model);
         }
 
         public ActionResult Incluir()
         {
-            var model = new ClienteViewModel();
+            var model = new FornecedorViewModel();
             model.Endereco.UF.ListaEstados = appuf.ObterListaEstados();
             return View(model);
         }
 
         public ActionResult Alterar(int id)
         {
-            var model = new ClienteViewModel();
+            var model = new FornecedorViewModel();
             model.Endereco.UF.ListaEstados = appuf.ObterListaEstados();
-            model = AppCliente.ObterPorId(id);
+            model = appService.ObterPorId(id);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Incluir(ClienteViewModel model)
+        public ActionResult Incluir(FornecedorViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
-            model = AppCliente.Adicionar(model);
+            model = appService.Adicionar(model);
             model.Endereco.UF.ListaEstados = appuf.ObterListaEstados();
 
             ViewBag.Limpa = "S";
@@ -48,21 +48,21 @@ namespace RGB.curso.WebPedidos.Controllers
             if (VerificaErros(model.ListaErros))
             {
                 ViewBag.Limpa = "N";
-                ViewBag.RetornoPost = "error,Não foi possível incluir o cliente!";
+                ViewBag.RetornoPost = "error,Não foi possível incluir o fornecedor!";
             }
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Alterar(ClienteViewModel model)
+        public ActionResult Alterar(FornecedorViewModel model)
         {
             model.Endereco.UF.ListaEstados = appuf.ObterListaEstados();
             if (!ModelState.IsValid) return View(model);
-            model = AppCliente.Atualizar(model);
+            model = appService.Atualizar(model);
             ViewBag.RetornoPost = "success,Cliente atualizado com sucesso!";
             if (VerificaErros(model.ListaErros))
             {
-                ViewBag.RetornoPost = "error,Não foi possível atualizar o cliente!";
+                ViewBag.RetornoPost = "error,Não foi possível atualizar o fornecedor!";
             }
             return View(model);
         }
