@@ -1,0 +1,45 @@
+﻿@model RGB.curso.aplicacao.AppPedidos.ViewModels.ClienteViewModel
+
+@{
+    ViewBag.Title = "Alteração - Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Alteração Cliente</h2>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_erros");
+
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        @Html.Partial("_FormCliente");
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+                        <a class="btn btn-ar btn-default" href="@Url.Action("Index", "Cliente")"><i class="glyphicon glyphicon-circle-arrow-left"></i> Voltar</a>
+                        <button type="submit" class="btn btn-ar btn-success"><i class="glyphicon glyphicon-save"></i> Gravar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @if (@ViewBag.RetornoPost != "" && @ViewBag.RetornoPost != null)
+    {
+        var notificacao = ViewBag.RetornoPost.Split(',');
+
+        <script>
+        ExibeMensagem("@notificacao[0]", "@notificacao[1]");
+
+        </script>
+    }
+}

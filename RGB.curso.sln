@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-Apresentacao", "0-Apresentacao", "{B9FCED1F-33F3-4ECB-8805-BE82556F187E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Services", "1-Services", "{3575E591-C231-4BC9-827D-766CDAF06690}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Aplicacao", "2-Aplicacao", "{1BE80FEF-4729-4F8F-B092-9E36567A1945}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Dominio", "3-Dominio", "{2353C5FD-FCC3-4B60-9F20-B0D338E16916}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infra", "4-Infra", "{665F3713-BB84-4FBF-A82A-C69D1FD8DA5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{130DE8C5-526D-47F0-8ADA-B956C5386A84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2-Crosscutting", "4.2-Crosscutting", "{95F86AB9-FCEB-470C-9B2C-DDA13350B77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.curso.dominio.BCpedido", "src\RGB.curso.dominio.BCpedido\RGB.curso.dominio.BCpedido.csproj", "{A85D69C6-DEA6-4ED1-9BB0-7D9C9D889F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.curso.dominio.shared", "src\RGB.curso.dominio.shared\RGB.curso.dominio.shared.csproj", "{68B2D1BC-3DB3-4D16-AED1-A72610EA4540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.curso.Infra.Data", "src\RGB.curso.Infra.Data\RGB.curso.Infra.Data.csproj", "{9D33D34F-6F1C-46A4-BA8C-6F816F74A986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.curso.WebPedidos", "RGB.curso.WebPedidos\RGB.curso.WebPedidos.csproj", "{484A5C2C-989D-4065-845E-FDD9EA9EA677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.Curso.Infra.CrossCutting.Customs", "src\RGB.Curso.Infra.CrossCutting.Customs\RGB.Curso.Infra.CrossCutting.Customs.csproj", "{F4BA962E-7ED9-4DA6-9947-7226E7576610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.curso.aplicacao.AppPedidos", "src\RGB.curso.aplicacao.AppPedidos\RGB.curso.aplicacao.AppPedidos.csproj", "{B6017032-5345-44F3-B211-C7D0B2517F49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RGB.Curso.Infra.CrossCutting.IOC", "src\RGB.Curso.Infra.CrossCutting.IOC\RGB.Curso.Infra.CrossCutting.IOC.csproj", "{E31252DF-640E-4662-B2BE-3F6BD9DE01ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A85D69C6-DEA6-4ED1-9BB0-7D9C9D889F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A85D69C6-DEA6-4ED1-9BB0-7D9C9D889F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A85D69C6-DEA6-4ED1-9BB0-7D9C9D889F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A85D69C6-DEA6-4ED1-9BB0-7D9C9D889F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B2D1BC-3DB3-4D16-AED1-A72610EA4540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B2D1BC-3DB3-4D16-AED1-A72610EA4540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B2D1BC-3DB3-4D16-AED1-A72610EA4540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B2D1BC-3DB3-4D16-AED1-A72610EA4540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D33D34F-6F1C-46A4-BA8C-6F816F74A986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D33D34F-6F1C-46A4-BA8C-6F816F74A986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D33D34F-6F1C-46A4-BA8C-6F816F74A986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D33D34F-6F1C-46A4-BA8C-6F816F74A986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{484A5C2C-989D-4065-845E-FDD9EA9EA677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{484A5C2C-989D-4065-845E-FDD9EA9EA677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{484A5C2C-989D-4065-845E-FDD9EA9EA677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{484A5C2C-989D-4065-845E-FDD9EA9EA677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BA962E-7ED9-4DA6-9947-7226E7576610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BA962E-7ED9-4DA6-9947-7226E7576610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BA962E-7ED9-4DA6-9947-7226E7576610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BA962E-7ED9-4DA6-9947-7226E7576610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6017032-5345-44F3-B211-C7D0B2517F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6017032-5345-44F3-B211-C7D0B2517F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6017032-5345-44F3-B211-C7D0B2517F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6017032-5345-44F3-B211-C7D0B2517F49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31252DF-640E-4662-B2BE-3F6BD9DE01ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31252DF-640E-4662-B2BE-3F6BD9DE01ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31252DF-640E-4662-B2BE-3F6BD9DE01ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31252DF-640E-4662-B2BE-3F6BD9DE01ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{130DE8C5-526D-47F0-8ADA-B956C5386A84} = {665F3713-BB84-4FBF-A82A-C69D1FD8DA5B}
+		{95F86AB9-FCEB-470C-9B2C-DDA13350B77B} = {665F3713-BB84-4FBF-A82A-C69D1FD8DA5B}
+		{A85D69C6-DEA6-4ED1-9BB0-7D9C9D889F43} = {2353C5FD-FCC3-4B60-9F20-B0D338E16916}
+		{68B2D1BC-3DB3-4D16-AED1-A72610EA4540} = {2353C5FD-FCC3-4B60-9F20-B0D338E16916}
+		{9D33D34F-6F1C-46A4-BA8C-6F816F74A986} = {130DE8C5-526D-47F0-8ADA-B956C5386A84}
+		{484A5C2C-989D-4065-845E-FDD9EA9EA677} = {B9FCED1F-33F3-4ECB-8805-BE82556F187E}
+		{F4BA962E-7ED9-4DA6-9947-7226E7576610} = {95F86AB9-FCEB-470C-9B2C-DDA13350B77B}
+		{B6017032-5345-44F3-B211-C7D0B2517F49} = {1BE80FEF-4729-4F8F-B092-9E36567A1945}
+		{E31252DF-640E-4662-B2BE-3F6BD9DE01ED} = {95F86AB9-FCEB-470C-9B2C-DDA13350B77B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BD6A27E-9D51-4A02-8693-DAF470B9C799}
+	EndGlobalSection
+EndGlobal
